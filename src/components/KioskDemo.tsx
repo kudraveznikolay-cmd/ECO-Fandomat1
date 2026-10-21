@@ -259,9 +259,9 @@ const KioskDemo: React.FC = () => {
 
   // Тестовые штрихкоды
   const testProducts: Record<string, { name: string; weight: number }> = {
-    '4600001000001': { name: 'Свердловская птицефабрика (картон)', weight: 82 },
-    '4600002000002': { name: 'Окская птицефабрика (пластик)', weight: 55 },
-    '4600003000003': { name: 'Рузское яйцо (картон)', weight: 78 },
+    '4600001000001': { name: 'Картон', weight: 82 },
+    '4600002000002': { name: 'Пластик', weight: 55 },
+    '4600003000003': { name: 'Полистирол', weight: 48 },
   };
 
   const generatePromoCode = () => {
