@@ -10,11 +10,11 @@ interface MachineData {
 
 const AdminPanel: React.FC = () => {
   const [machines, setMachines] = useState<MachineData[]>([
-    { id: 1, location: 'ТЦ "Мега", вход №3, Екатеринбург', status: 'online', fillLevel: 23.5, transactionsToday: 12 },
-    { id: 2, location: 'Супермаркет "Пятёрочка", ул. Ленина 42', status: 'online', fillLevel: 67.2, transactionsToday: 8 },
-    { id: 3, location: 'ЖК "Зелёная роща", подъезд 1', status: 'maintenance', fillLevel: 95.0, transactionsToday: 0 },
-    { id: 4, location: 'ТЦ "Гринвич", этаж -1', status: 'online', fillLevel: 45.8, transactionsToday: 15 },
-    { id: 5, location: 'Маркет "Магнит", ул. Мира 15', status: 'full', fillLevel: 98.2, transactionsToday: 22 },
+    { id: 1, location: 'Евроопт, пр-т Дзержинского 134, Минск', status: 'online', fillLevel: 23.5, transactionsToday: 12 },
+    { id: 2, location: 'Корона, ул. Маяковского 1, Брест', status: 'online', fillLevel: 67.2, transactionsToday: 8 },
+    { id: 3, location: 'Санта, ул. Советская 97, Гомель', status: 'maintenance', fillLevel: 95.0, transactionsToday: 0 },
+    { id: 4, location: 'Гиппо, пр-т Космонавтов 2, Витебск', status: 'online', fillLevel: 45.8, transactionsToday: 15 },
+    { id: 5, location: 'Соседи, ул. Ленинградская 35, Гродно', status: 'full', fillLevel: 98.2, transactionsToday: 22 },
   ]);
 
   const [stats, setStats] = useState({
@@ -143,6 +143,45 @@ const AdminPanel: React.FC = () => {
         </div>
       </div>
 
+      {/* Торговые сети-партнёры */}
+      <div className="bg-white rounded-2xl shadow-md border overflow-hidden">
+        <div className="px-6 py-4 border-b bg-gray-50">
+          <h3 className="text-lg font-bold text-gray-800">🇧🇾 Торговые сети-партнёры (Республика Беларусь)</h3>
+          <p className="text-sm text-gray-500 mt-1">Фандоматы установлены в магазинах ведущих розничных сетей страны</p>
+        </div>
+        <div className="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          {[
+            { name: 'Евроопт', type: 'Гипермаркет', machines: 12, cities: 'Минск, Брест, Гомель, Гродно, Витебск, Могилёв', color: 'bg-red-50 border-red-200' },
+            { name: 'Корона', type: 'Гипермаркет', machines: 5, cities: 'Минск, Брест, Гродно, Витебск', color: 'bg-blue-50 border-blue-200' },
+            { name: 'Санта', type: 'Супермаркет', machines: 8, cities: 'Минск, Гомель, Брест, Могилёв', color: 'bg-green-50 border-green-200' },
+            { name: 'Гиппо', type: 'Гипермаркет', machines: 4, cities: 'Витебск, Орша, Полоцк, Новополоцк', color: 'bg-purple-50 border-purple-200' },
+            { name: 'Соседи', type: 'Магазин у дома', machines: 15, cities: 'Гродно, Лида, Сморгонь, Ошмяны', color: 'bg-yellow-50 border-yellow-200' },
+            { name: 'Алми', type: 'Супермаркет', machines: 3, cities: 'Минск, Борисов, Солигорск', color: 'bg-orange-50 border-orange-200' },
+          ].map((network) => (
+            <div key={network.name} className={`${network.color} border rounded-xl p-4`}>
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-bold text-gray-800 text-lg">{network.name}</span>
+                <span className="bg-white/70 px-2 py-0.5 rounded-full text-xs font-semibold text-gray-700">
+                  {network.machines} автом.
+                </span>
+              </div>
+              <div className="text-xs text-gray-600 mb-1">📦 {network.type}</div>
+              <div className="text-xs text-gray-500">📍 {network.cities}</div>
+            </div>
+          ))}
+        </div>
+        <div className="px-6 py-3 bg-gray-50 border-t">
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-gray-600">Всего автоматов в сетях:</span>
+            <span className="font-bold text-gray-800">47 фандоматов</span>
+          </div>
+          <div className="flex items-center justify-between text-sm mt-1">
+            <span className="text-gray-600">Покрытие областей:</span>
+            <span className="font-bold text-gray-800">6 из 6 областей + г. Минск</span>
+          </div>
+        </div>
+      </div>
+
       {/* Последние транзакции */}
       <div className="bg-white rounded-2xl shadow-md border overflow-hidden">
         <div className="px-6 py-4 border-b bg-gray-50">
@@ -150,11 +189,11 @@ const AdminPanel: React.FC = () => {
         </div>
         <div className="p-4 space-y-2">
           {[
-            { id: 1247, machine: 1, barcode: '4600001000001', weight: 82.3, time: '14:32:05', promo: 'ECO-K7M9P2' },
-            { id: 1246, machine: 4, barcode: '4600003000003', weight: 76.1, time: '14:28:41', promo: 'ECO-A3B8N5' },
-            { id: 1245, machine: 1, barcode: '4600002000002', weight: 53.7, time: '14:25:18', promo: 'ECO-Q9W4R7' },
-            { id: 1244, machine: 5, barcode: '4600004000004', weight: 84.2, time: '14:22:03', promo: 'ECO-L2X6T8' },
-            { id: 1243, machine: 2, barcode: '4600001000001', weight: 79.5, time: '14:18:55', promo: 'ECO-M5Y1V3' },
+            { id: 1247, machine: 1, barcode: '4810123400015', weight: 82.3, time: '14:32:05', promo: 'ECO-K7M9P2' },
+            { id: 1246, machine: 4, barcode: '4810234500022', weight: 76.1, time: '14:28:41', promo: 'ECO-A3B8N5' },
+            { id: 1245, machine: 1, barcode: '4810345600039', weight: 53.7, time: '14:25:18', promo: 'ECO-Q9W4R7' },
+            { id: 1244, machine: 5, barcode: '4810456700046', weight: 84.2, time: '14:22:03', promo: 'ECO-L2X6T8' },
+            { id: 1243, machine: 2, barcode: '4810567800053', weight: 79.5, time: '14:18:55', promo: 'ECO-M5Y1V3' },
           ].map((tx) => (
             <div key={tx.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
               <div className="flex items-center gap-4">
