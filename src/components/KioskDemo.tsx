@@ -273,6 +273,9 @@ const KioskDemo: React.FC = () => {
     return code;
   };
 
+  // Список материалов для случайного выбора при вводе 5-значного кода
+  const materials = ['Картон', 'Пластик', 'Полистирол'];
+
   const handleScan = useCallback(async () => {
     if (!barcode.trim()) return;
 
@@ -282,13 +285,27 @@ const KioskDemo: React.FC = () => {
     // Имитация задержки API
     await new Promise(resolve => setTimeout(resolve, 1500));
 
-    const product = testProducts[barcode.trim()];
+    const code = barcode.trim();
+    const product = testProducts[code];
+
+    // Принимаем штрихкод, если он:
+    // 1. Есть в списке известных тестовых кодов, ИЛИ
+    // 2. Является 5-значным числом
+    const isFiveDigitNumber = /^\d{5}$/.test(code);
+
     if (product) {
       setProductName(product.name);
       setWeight(product.weight + Math.floor(Math.random() * 10 - 5));
       setStatus('valid');
+    } else if (isFiveDigitNumber) {
+      // Любой 5-значный код — валидный, материал выбираем случайно
+      const randomMaterial = materials[Math.floor(Math.random() * materials.length)];
+      const randomWeight = Math.floor(Math.random() * 80) + 40; // 40–120 г
+      setProductName(randomMaterial);
+      setWeight(randomWeight);
+      setStatus('valid');
     } else {
-      setErrorMessage(`Штрихкод "${barcode}" не найден в базе данных`);
+      setErrorMessage(`Штрихкод "${code}" не найден в базе данных. Введите 5-значный код.`);
       setStatus('error');
     }
   }, [barcode]);
@@ -385,6 +402,11 @@ const KioskDemo: React.FC = () => {
                         <span className="text-gray-500 ml-2">{prod.name}</span>
                       </button>
                     ))}
+                    <div className="pt-2 border-t border-gray-700 mt-2">
+                      <p className="text-yellow-400 text-xs text-center">
+                        💡 Или введите любое 5-значное число (напр. 12345)
+                      </p>
+                    </div>
                   </div>
                 </div>
               )}
