@@ -27,15 +27,15 @@ const Architecture: React.FC = () => {
         {/* Ключевые цифры */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
           <div className="bg-white rounded-xl p-4 text-center shadow-sm border-l-4 border-red-500">
-            <div className="text-3xl md:text-4xl font-bold text-red-600">3.5 млрд</div>
+            <div className="text-3xl md:text-4xl font-bold text-red-600">2.5 млрд</div>
             <div className="text-xs text-gray-600 mt-1">яиц производится в Беларуси в год</div>
           </div>
           <div className="bg-white rounded-xl p-4 text-center shadow-sm border-l-4 border-orange-500">
-            <div className="text-3xl md:text-4xl font-bold text-orange-600">~300 млн</div>
+            <div className="text-3xl md:text-4xl font-bold text-orange-600">~250 млн</div>
             <div className="text-xs text-gray-600 mt-1">лотков превращаются в отходы</div>
           </div>
           <div className="bg-white rounded-xl p-4 text-center shadow-sm border-l-4 border-amber-500">
-            <div className="text-3xl md:text-4xl font-bold text-amber-600">~24 000 т</div>
+            <div className="text-3xl md:text-4xl font-bold text-amber-600">~17 000 т</div>
             <div className="text-xs text-gray-600 mt-1">мусора ежегодно</div>
           </div>
           <div className="bg-white rounded-xl p-4 text-center shadow-sm border-l-4 border-yellow-500">
@@ -80,25 +80,25 @@ const Architecture: React.FC = () => {
           </div>
         </div>
 
-        {/* Визуальное сравнение: что эквивалентно 24 000 тоннам */}
+        {/* Визуальное сравнение: что эквивалентно 17 000 тоннам */}
         <div className="bg-white rounded-xl p-5 shadow-sm mb-6">
           <h4 className="font-bold text-gray-800 mb-4 flex items-center gap-2">
-            📐 Масштаб в понятных единицах (24 000 т отходов/год в РБ)
+            📐 Масштаб в понятных единицах (17 000 т отходов/год в РБ)
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
               <div className="text-4xl mb-2">🚛</div>
-              <div className="text-2xl font-bold text-blue-700">2 400</div>
+              <div className="text-2xl font-bold text-blue-700">1 700</div>
               <div className="text-xs text-gray-600">полных фур мусора</div>
             </div>
             <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 text-center">
               <div className="text-4xl mb-2">⚽</div>
-              <div className="text-2xl font-bold text-purple-700">3.4</div>
+              <div className="text-2xl font-bold text-purple-700">2.4</div>
               <div className="text-xs text-gray-600">футбольных поля, засыпанных лотками</div>
             </div>
             <div className="bg-pink-50 border border-pink-200 rounded-lg p-4 text-center">
               <div className="text-4xl mb-2">🐘</div>
-              <div className="text-2xl font-bold text-pink-700">4 000</div>
+              <div className="text-2xl font-bold text-pink-700">2 800</div>
               <div className="text-xs text-gray-600">масс африканских слонов</div>
             </div>
           </div>
