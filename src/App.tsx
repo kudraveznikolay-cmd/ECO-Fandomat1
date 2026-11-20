@@ -18,9 +18,9 @@ interface Tab {
 }
 
 const tabs: Tab[] = [
+  { id: 'architecture', label: 'Архитектура', icon: '🏗️', description: 'Общая схема системы и проблематика' },
   { id: 'kiosk', label: 'Киоск', icon: '💻', description: 'Интерфейс автомата' },
   { id: 'admin', label: 'Админка', icon: '📊', description: 'Панель управления' },
-  { id: 'architecture', label: 'Архитектура', icon: '🏗️', description: 'Общая схема системы' },
   { id: 'structure', label: 'Структура', icon: '📁', description: 'Дерево файлов проекта' },
   { id: 'database', label: 'База данных', icon: '🗄️', description: 'SQLAlchemy модели' },
   { id: 'backend', label: 'Backend', icon: '⚙️', description: 'FastAPI эндпоинты' },
@@ -29,7 +29,7 @@ const tabs: Tab[] = [
 ];
 
 function App() {
-  const [activeTab, setActiveTab] = useState<TabId>('kiosk');
+  const [activeTab, setActiveTab] = useState<TabId>('architecture');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const renderContent = () => {
